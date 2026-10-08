@@ -197,19 +197,29 @@
             overflow: hidden;
         }
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            opacity: 0.9;
-            transition: transform 0.8s ease, opacity 0.4s;
-        }
+		.slide img,
+		.slide video,
+		.slide iframe {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			border: none;
+			opacity: 0.9;
+			transition: transform 0.8s ease, opacity 0.4s;
+		}
 
-        .slide:hover img {
-            transform: scale(1.02);
-            opacity: 1;
-        }
+		.slide:hover img,
+		.slide:hover video {
+			transform: scale(1.02);
+			opacity: 1;
+		}
+		
+		/* Vertical Video Option 1: Letterboxing */
+		.slide.vertical-slide video {
+			object-fit: contain;
+			background-color: #000000;
+		}
 
         .slide-overlay {
             position: absolute;
@@ -507,6 +517,28 @@
                         <span class="slide-category-date">Property Management Platforms</span>
                     </div>
                 </div>
+				<!-- VERTICAL VIDEO SLIDE -->
+				 <div class="slide vertical-slide">
+					<video autoplay loop muted controls playsinline poster="./assets/Project6.png">
+					<source src="./assets/Project6.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+					</video>
+					<div class="slide-overlay">
+						<span class="slide-title">Vertical Reel Showcase</span>
+						<span class="slide-category-date">Mobile UI & Reels</span>
+					</div>
+				</div>
+				<!-- VERTICAL VIDEO SLIDE -->
+				 <div class="slide vertical-slide">
+					<video autoplay loop muted controls playsinline poster="./assets/Project7.png">
+					<source src="./assets/Project7.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+					</video>
+					<div class="slide-overlay">
+						<span class="slide-title">Vertical Reel Showcase</span>
+						<span class="slide-category-date">Mobile UI & Reels</span>
+					</div>
+				</div>
             </div>
         </div>
 
@@ -553,7 +585,7 @@
 
                 <div class="cv-item">
                     <div class="cv-item-header">
-                        <span class="cv-item-title">Summer Carter ExpRealty</span>
+                        <span class="cv-item-title">Ray Homes KC</span>
                         <span class="cv-item-sub">2023</span>
                     </div>
                     <div class="cv-item-detail">Virtual Assistant. Content writing and MLS listing management.</div>
@@ -650,15 +682,29 @@
                 }
             }
 
-            function updateSlidePosition() {
-                const slideWidth = slides[0].getBoundingClientRect().width;
-                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                const indicators = Array.from(indicatorsContainer.children);
-                indicators.forEach((ind, idx) => {
-                    if (idx === currentIndex) ind.classList.add('active');
-                    else ind.classList.remove('active');
-                });
+			function updateSlidePosition() {
+			const slideWidth = slides[0].getBoundingClientRect().width;
+			track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+		// Control video playback based on active slide
+			slides.forEach((slide, idx) => {
+			const videos = slide.querySelectorAll('video');
+			videos.forEach(video => {
+				if (idx === currentIndex) {
+                video.play().catch(() => {}); // Play video if active
+            } else {
+                video.pause(); // Pause video if inactive
+                video.currentTime = 0; // Reset video back to start
             }
+        });
+		});
+
+    const indicators = Array.from(indicatorsContainer.children);
+    indicators.forEach((ind, idx) => {
+        if (idx === currentIndex) ind.classList.add('active');
+        else ind.classList.remove('active');
+		});
+			}
 
             function goToSlide(index) {
                 if (index < 0) index = slideCount - 1;
