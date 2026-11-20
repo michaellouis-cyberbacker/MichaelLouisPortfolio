@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osazee Edebiri | Five-Star Client Review Program</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bebas Neue & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#121212',
+                        brandCard: '#1B1B1B',
+                        brandBorder: '#3A322E',
+                        brandPrimary: '#D2531F',
+                        brandPrimaryHover: '#b84317',
+                        brandText: '#EDE8E4',
+                        brandMuted: '#9B938D'
+                    },
+                    fontFamily: {
+                        heading: ['Bebas Neue', 'sans-serif'],
+                        body: ['Inter', 'Helvetica Neue', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #EDE8E4;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.45; transform: scale(1); }
+            50% { opacity: 0.65; transform: scale(1.08); }
+        }
+
+        .glow-crimson {
+            background: radial-gradient(circle, rgba(210, 83, 31, 0.28) 0%, rgba(18, 18, 18, 0) 70%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        .glow-blue {
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.22) 0%, rgba(18, 18, 18, 0) 70%);
+            animation: pulseGlow 10s ease-in-out infinite 2s;
+        }
+
+        /* Glassmorphism & Custom Bento Cards */
+        .bento-card {
+            background-color: #1B1B1B;
+            border: 1px solid #3A322E;
+            transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        
+        .bento-card:hover {
+            border-color: #D2531F;
+            box-shadow: 0 10px 30px -10px rgba(210, 83, 31, 0.25);
+        }
+
+        .glass-dock {
+            background: rgba(27, 27, 27, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(58, 50, 46, 0.8);
+        }
+
+        /* Responsive Iframe Container for Vimeo Background */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            min-width: 177.77vh;
+            min-height: 56.25vw;
+            transform: translate(-50%, -50%) scale(1.05);
+            pointer-events: none;
+        }
+
+        /* Accordion Smooth Chevron Rotation */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3A322E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D2531F;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between selection:bg-[#D2531F] selection:text-white">
+
+    <!-- 1. AMBIENT BACKGROUND GLOWS -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <!-- Top Left Crimson/Rust Glow -->
+        <div class="glow-crimson absolute -top-40 -left-40 w-[650px] h-[650px] rounded-full blur-3xl"></div>
+        <!-- Bottom Right Blue/Indigo Studio Glow -->
+        <div class="glow-blue absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full blur-3xl"></div>
+        <!-- Center Ambient Accent -->
+        <div class="glow-crimson absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-3xl opacity-20"></div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28">
+
+        <!-- HEADER BRAND BAR -->
+        <header class="flex flex-wrap items-center justify-between py-4 mb-6 border-b border-[#3A322E]/50 gap-4">
+            <div class="flex items-center space-x-3">
+                <!-- Avatar Preview Thumbnail -->
+                <div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-r from-[#D2531F] to-amber-500 shadow-md">
+                    <img 
+                        src="https://mcusercontent.com/20a9caa2b4ada5a83286dd54a/images/12ea5a5e-5adb-6340-0500-2b11b0783a20.jpg" 
+                        alt="Osazee Edebiri Headshot" 
+                        class="w-full h-full object-cover rounded-full"
+                    />
+                </div>
+                <div>
+                    <span class="block font-heading tracking-wider text-2xl leading-none text-white">OSAZEE EDEBIRI</span>
+                    <span class="text-[11px] text-brandMuted uppercase tracking-widest font-semibold">Keller Williams East County • DRE #02145259</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="tel:4084718462" class="inline-flex items-center text-xs font-semibold tracking-wider text-brandMuted hover:text-white transition-colors bg-[#1B1B1B] px-4 py-2.5 rounded-full border border-[#3A322E] hover:border-[#D2531F]">
+                    <i class="fa-solid fa-phone text-[#D2531F] mr-2"></i> (408) 471-8462
+                </a>
+                <a href="mailto:osazee@kw.com" class="inline-flex items-center text-xs font-semibold tracking-wider text-brandMuted hover:text-white transition-colors bg-[#1B1B1B] px-4 py-2.5 rounded-full border border-[#3A322E] hover:border-[#D2531F]">
+                    <i class="fa-solid fa-envelope text-[#D2531F] mr-2"></i> DIRECT CONTACT
+                </a>
+            </div>
+        </header>
+
+        <!-- 2. HERO BENTO THEATER FRAME WITH HEADSHOT -->
+        <section class="mb-10">
+            <div class="bento-card rounded-3xl overflow-hidden relative shadow-2xl min-h-[440px] sm:min-h-[500px] flex items-center">
+                <!-- Vimeo Video Layer -->
+                <div class="absolute inset-0 z-0 video-container opacity-40">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1126012716?background=1&autoplay=1&loop=1&muted=1&quality=1080p" 
+                        allow="autoplay; fullscreen" 
+                        title="Background Video">
+                    </iframe>
+                </div>
+                
+                <!-- Dark Gradient Overlays for Studio Contrast -->
+                <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#121212] via-[#121212]/75 to-[#121212]/30"></div>
+                <div class="absolute inset-0 z-10 bg-gradient-to-r from-[#121212]/95 via-[#121212]/70 to-transparent"></div>
+
+                <!-- Hero Content Overlay -->
+                <div class="relative z-20 p-6 sm:p-12 w-full max-w-4xl flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8">
+                    
+                    <!-- Osazee Headshot Avatar -->
+                    <div class="flex-shrink-0">
+                        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-gradient-to-tr from-[#D2531F] via-amber-500 to-[#D2531F] shadow-2xl shadow-[#D2531F]/30 group">
+                            <img 
+                                src="https://mcusercontent.com/20a9caa2b4ada5a83286dd54a/images/12ea5a5e-5adb-6340-0500-2b11b0783a20.jpg" 
+                                alt="Osazee Edebiri Headshot" 
+                                class="w-full h-full object-cover rounded-full shadow-inner"
+                            />
+                            <div class="absolute bottom-1 right-1 bg-[#121212] p-1.5 rounded-full border border-[#D2531F]">
+                                <div class="bg-[#D2531F] w-4 h-4 rounded-full flex items-center justify-center text-[9px] text-white">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Block -->
+                    <div class="flex-1">
+                        <div class="inline-flex items-center space-x-2 bg-[#D2531F]/20 border border-[#D2531F]/50 text-[#D2531F] text-xs font-semibold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-4 backdrop-blur-md">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <span>Client Review Portal</span>
+                        </div>
+                        
+                        <h1 class="font-heading text-5xl sm:text-7xl lg:text-8xl tracking-wider text-white uppercase leading-none drop-shadow-md">
+                            OSAZEE EDEBIRI
+                        </h1>
+                        
+                        <p class="font-heading text-2xl sm:text-4xl text-[#D2531F] tracking-wide mt-1 uppercase drop-shadow">
+                            Raising the Bar in Real Estate
+                        </p>
+
+                        <p class="text-sm sm:text-base text-gray-300 mt-4 leading-relaxed max-w-2xl font-normal">
+                            Thank you for trusting me with your real estate journey. Your feedback allows me to continuously elevate the client experience and helps future buyers and sellers make informed decisions with confidence.
+                        </p>
+
+                        <!-- Quick Action Anchor -->
+                        <div class="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-4">
+                            <a href="#review-platforms" class="inline-flex items-center justify-center bg-[#D2531F] hover:bg-[#b84317] text-white font-semibold px-6 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#D2531F]/30 hover:scale-[1.02]">
+                                <span>Leave Your Review Below</span>
+                                <i class="fa-solid fa-arrow-down ml-2 text-sm"></i>
+                            </a>
+                            <a href="#draft-helper" class="inline-flex items-center justify-center bg-[#1B1B1B]/90 hover:bg-[#252525] text-white text-sm font-medium px-5 py-3.5 rounded-full border border-[#3A322E] transition-all duration-200">
+                                <i class="fa-solid fa-wand-magic-sparkles text-[#D2531F] mr-2"></i> Draft Notepad
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. REVIEW DRAFTER FEATURE (NO GIFTS / TOKENS) -->
+        <section id="draft-helper" class="mb-10">
+            <div class="bento-card rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-[#1B1B1B] to-[#161616]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#D2531F]">Seamless Review Drafter</span>
+                        <h2 class="font-heading text-2xl sm:text-3xl text-white tracking-wide">Write Once, Share Across Platforms</h2>
+                    </div>
+                    <span class="text-xs text-brandMuted bg-[#121212] px-3 py-1.5 rounded-lg border border-[#3A322E] self-start sm:self-auto">
+                        <i class="fa-regular fa-copy text-[#D2531F] mr-1.5"></i> One-Click Clipboard Copy
+                    </span>
+                </div>
+                
+                <p class="text-sm text-brandMuted mb-4">
+                    Draft your thoughts below to easily copy and paste your feedback onto Keller Williams, Google, or Zillow.
+                </p>
+
+                <div class="relative">
+                    <textarea 
+                        id="reviewTextarea" 
+                        rows="3" 
+                        placeholder="e.g., Working with Osazee was an exceptional experience! His professionalism, deep market insight, and dedication made buying our home seamless and stress-free..." 
+                        class="w-full bg-[#121212] text-brandText border border-[#3A322E] rounded-xl p-4 text-sm focus:outline-none focus:border-[#D2531F] transition-colors placeholder-gray-600 resize-y"
+                    ></textarea>
+                    
+                    <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center space-x-2 text-xs text-gray-400">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                            <span>Tip: Mentions of Osazee's responsiveness, local knowledge, and negotiation skills are very helpful!</span>
+                        </div>
+                        <button 
+                            onclick="copyReviewDraft()" 
+                            id="copyDraftBtn"
+                            class="inline-flex items-center justify-center bg-[#3A322E] hover:bg-[#D2531F] text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-all duration-200"
+                        >
+                            <i class="fa-regular fa-copy mr-2"></i>
+                            <span id="copyBtnText">Copy Review Text</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CALL-TO-ACTION BENTO GRID (3 PLATFORMS) -->
+        <section id="review-platforms" class="mb-12">
+            <div class="text-center mb-8">
+                <h2 class="font-heading text-3xl sm:text-5xl tracking-wide text-white uppercase">Choose Your Preferred Review Platform</h2>
+                <p class="text-brandMuted text-sm sm:text-base mt-1">Posting on multiple channels helps tremendously to raise the bar for luxury real estate services.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- CARD 1: KELLER WILLIAMS -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between relative group">
+                    <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-building-columns text-6xl text-white"></i>
+                    </div>
+
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-2xl text-red-500">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-400 mb-2 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl text-white tracking-wide">KW Official Website</h3>
+                        <p class="text-sm text-brandMuted mt-2 leading-relaxed">
+                            Official Keller Williams testimonial capture to highlight your experience on Osazee's primary brokerage network.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-[#3A322E]/50">
+                        <a 
+                            href="https://osazee.kw.com/testimonial-capture" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center bg-[#D2531F] hover:bg-[#b84317] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#D2531F]/30"
+                        >
+                            <span>Review on KW Website</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: GOOGLE -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between relative group">
+                    <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-brands fa-google text-6xl text-white"></i>
+                    </div>
+
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-2xl text-blue-400">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-400 mb-2 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl text-white tracking-wide">Google Review</h3>
+                        <p class="text-sm text-brandMuted mt-2 leading-relaxed">
+                            Quickest option for Gmail and Google users. Helps local buyers and sellers discover Osazee’s 5-star real estate service.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-[#3A322E]/50">
+                        <a 
+                            href="https://g.page/r/CWLwECuIb4O5EAI/review" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center bg-[#D2531F] hover:bg-[#b84317] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#D2531F]/30"
+                        >
+                            <span>Review on Google</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: ZILLOW -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between relative group">
+                    <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-house-chimney text-6xl text-white"></i>
+                    </div>
+
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-2xl text-cyan-400">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-400 mb-2 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl text-white tracking-wide">Zillow Review</h3>
+                        <p class="text-sm text-brandMuted mt-2 leading-relaxed">
+                            Premier platform for real estate verification. Validates transaction success and local neighborhood expertise.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-[#3A322E]/50">
+                        <a 
+                            href="https://www.zillow.com/reviews/write?s=X1-ZUshltd7dlrt3d_8jmj4" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="w-full inline-flex items-center justify-center bg-[#D2531F] hover:bg-[#b84317] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#D2531F]/30"
+                        >
+                            <span>Review on Zillow</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. INSTRUCTIONS ACCORDION (STRICTLY NO GIFTS) -->
+        <section class="mb-12">
+            <div class="bento-card rounded-2xl overflow-hidden">
+                <details class="group" open>
+                    <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-[#1B1B1B] hover:bg-[#222222] transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-[#D2531F]/20 border border-[#D2531F]/40 flex items-center justify-center text-[#D2531F]">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-2xl text-white tracking-wide">How To Submit Your Review</h3>
+                                <p class="text-xs text-brandMuted">Quick 3-step walkthrough for sharing your experience</p>
+                            </div>
+                        </div>
+                        <span class="chevron-icon text-brandMuted group-hover:text-white transition-transform duration-300">
+                            <i class="fa-solid fa-chevron-down text-lg"></i>
+                        </span>
+                    </summary>
+
+                    <div class="p-6 pt-3 border-t border-[#3A322E]/60 bg-[#151515]">
+                        <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <li class="bg-[#1B1B1B] p-4 rounded-xl border border-[#3A322E]/40">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="w-6 h-6 rounded-full bg-[#D2531F] text-white text-xs font-bold flex items-center justify-center">1</span>
+                                    <strong class="text-white text-sm">Write or Draft</strong>
+                                </div>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Use the <a href="#draft-helper" class="text-[#D2531F] hover:underline font-medium">Review Drafter</a> above or write your honest thoughts directly on the platform.
+                                </p>
+                            </li>
+                            <li class="bg-[#1B1B1B] p-4 rounded-xl border border-[#3A322E]/40">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="w-6 h-6 rounded-full bg-[#D2531F] text-white text-xs font-bold flex items-center justify-center">2</span>
+                                    <strong class="text-white text-sm">Copy Your Text</strong>
+                                </div>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Click "Copy Review Text" to save your message directly to your device clipboard.
+                                </p>
+                            </li>
+                            <li class="bg-[#1B1B1B] p-4 rounded-xl border border-[#3A322E]/40">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="w-6 h-6 rounded-full bg-[#D2531F] text-white text-xs font-bold flex items-center justify-center">3</span>
+                                    <strong class="text-white text-sm">Paste & Submit</strong>
+                                </div>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Click any of the platform buttons above (KW, Google, or Zillow), paste your review, and hit submit!
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- 6. SAMPLE TESTIMONIALS BENTO -->
+        <section class="mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#D2531F]">Client Inspiration</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl tracking-wide text-white uppercase">Client Success Stories</h2>
+                </div>
+                <p class="text-xs text-brandMuted mt-2 sm:mt-0">Reflecting high standards across every transaction</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- TESTIMONIAL 1 -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-brandMuted bg-[#121212] px-2.5 py-1 rounded-full border border-[#3A322E]">Verified Buyer</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic leading-relaxed">
+                            "Osazee’s strategic mindset and calm demeanor turned a complex market into a smooth win. He negotiated key terms we didn't even know were possible. Truly raising the bar in real estate!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#3A322E]/50 flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-sm text-white">Marcus & Elena R.</p>
+                            <p class="text-xs text-brandMuted">Homebuyers</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[#D2531F] font-bold">
+                            ME
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TESTIMONIAL 2 -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-brandMuted bg-[#121212] px-2.5 py-1 rounded-full border border-[#3A322E]">Verified Seller</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic leading-relaxed">
+                            "Selling our property was effortless with Osazee. High-end marketing, strategic pricing, and constant communication brought us strong offers over asking price in record time."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#3A322E]/50 flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-sm text-white">David S.</p>
+                            <p class="text-xs text-brandMuted">Home Seller</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[#D2531F] font-bold">
+                            DS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TESTIMONIAL 3 -->
+                <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-amber-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-brandMuted bg-[#121212] px-2.5 py-1 rounded-full border border-[#3A322E]">Repeat Client</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic leading-relaxed">
+                            "Integrity, responsiveness, and genuine care for his clients. Osazee treats every transaction with precision. If you want top-tier representation, look no further."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#3A322E]/50 flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-sm text-white">Samantha & Tyler V.</p>
+                            <p class="text-xs text-brandMuted">Repeat Clients</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[#D2531F] font-bold">
+                            SV
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 7. CONNECT & SOCIAL MEDIA BENTO BAR -->
+        <section class="mb-12">
+            <div class="bento-card rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-[#1B1B1B] via-[#1A1817] to-[#1B1B1B]">
+                <div class="text-center md:text-left">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#D2531F]">Stay Connected</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl text-white tracking-wide mt-1">Follow Lifted Living with Osazee</h3>
+                    <p class="text-xs text-brandMuted mt-1">Connect on social media for luxury market updates, community insights, and home listings.</p>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.instagram.com/FitRealtorZee" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-12 h-12 rounded-full bg-[#121212] border border-[#3A322E] hover:border-[#D2531F] text-brandMuted hover:text-white flex items-center justify-center text-xl transition-all hover:scale-110 shadow-lg">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/osazee.edebiri" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-12 h-12 rounded-full bg-[#121212] border border-[#3A322E] hover:border-[#D2531F] text-brandMuted hover:text-white flex items-center justify-center text-xl transition-all hover:scale-110 shadow-lg">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/osazee" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-12 h-12 rounded-full bg-[#121212] border border-[#3A322E] hover:border-[#D2531F] text-brandMuted hover:text-white flex items-center justify-center text-xl transition-all hover:scale-110 shadow-lg">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. FOOTER WITH BRAND LOGO CONTAINER -->
+    <footer class="relative z-10 border-t border-[#3A322E] bg-[#0E0E0E] py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            
+            <!-- Logo in Clean Container -->
+            <div class="flex flex-col items-center md:items-start">
+                <div class="bg-white p-3 rounded-2xl shadow-xl inline-block mb-3 border border-gray-200">
+                    <img 
+                        src="https://mcusercontent.com/20a9caa2b4ada5a83286dd54a/images/af995633-dd33-241b-b9f7-eb1662f55fff.png" 
+                        alt="Lifted Living with Osazee Logo" 
+                        class="h-12 w-auto object-contain"
+                    />
+                </div>
+                <div class="font-heading text-xl tracking-wider text-white">
+                    LIFTED LIVING WITH OSAZEE
+                </div>
+                <p class="text-xs text-brandMuted mt-0.5">
+                    Keller Williams East County • DRE #02145259
+                </p>
+            </div>
+
+            <!-- Contact & Social Icons -->
+            <div class="flex flex-col items-center gap-3 text-xs text-brandMuted">
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="tel:4084718462" class="hover:text-white transition-colors flex items-center bg-[#1B1B1B] px-4 py-2 rounded-full border border-[#3A322E] hover:border-[#D2531F]">
+                        <i class="fa-solid fa-phone text-[#D2531F] mr-2"></i> (408) 471-8462
+                    </a>
+                    <a href="mailto:osazee@kw.com" class="hover:text-white transition-colors flex items-center bg-[#1B1B1B] px-4 py-2 rounded-full border border-[#3A322E] hover:border-[#D2531F]">
+                        <i class="fa-solid fa-envelope text-[#D2531F] mr-2"></i> osazee@kw.com
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-3 mt-1">
+                    <a href="https://www.instagram.com/FitRealtorZee" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-[#1B1B1B] border border-[#3A322E] hover:border-[#D2531F] hover:text-white flex items-center justify-center text-brandMuted transition-all">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                    </a>
+                    <a href="https://www.facebook.com/osazee.edebiri" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-[#1B1B1B] border border-[#3A322E] hover:border-[#D2531F] hover:text-white flex items-center justify-center text-brandMuted transition-all">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/osazee" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-[#1B1B1B] border border-[#3A322E] hover:border-[#D2531F] hover:text-white flex items-center justify-center text-brandMuted transition-all">
+                        <i class="fa-brands fa-linkedin-in text-base"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-xs text-brandMuted/70">
+                &copy; <span id="yearSpan"></span> Osazee Edebiri.<br class="hidden md:inline"> All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 9. MOBILE STICKY DOCK (GLASSMORPHISM) -->
+    <nav id="mobileDock" aria-label="Quick Review Links" class="md:hidden fixed bottom-4 left-4 right-4 z-50 glass-dock rounded-2xl p-2 shadow-2xl transition-all duration-300">
+        <div class="grid grid-cols-3 gap-2 text-center">
+            <a href="https://osazee.kw.com/testimonial-capture" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-white/5 hover:bg-[#D2531F] text-white transition-colors">
+                <i class="fa-solid fa-award text-red-400 text-sm mb-1"></i>
+                <span class="text-[11px] font-semibold tracking-wide">KW Site</span>
+            </a>
+            <a href="https://g.page/r/CWLwECuIb4O5EAI/review" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-white/5 hover:bg-[#D2531F] text-white transition-colors">
+                <i class="fa-brands fa-google text-blue-400 text-sm mb-1"></i>
+                <span class="text-[11px] font-semibold tracking-wide">Google</span>
+            </a>
+            <a href="https://www.zillow.com/reviews/write?s=X1-ZUshltd7dlrt3d_8jmj4" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-white/5 hover:bg-[#D2531F] text-white transition-colors">
+                <i class="fa-solid fa-house-chimney text-cyan-400 text-sm mb-1"></i>
+                <span class="text-[11px] font-semibold tracking-wide">Zillow</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Dynamic copyright year
+        document.getElementById('yearSpan').textContent = new Date().getFullYear();
+
+        // Copy draft functionality with clipboard fallback
+        function copyReviewDraft() {
+            const textarea = document.getElementById('reviewTextarea');
+            const textToCopy = textarea.value.trim();
+            const btnText = document.getElementById('copyBtnText');
+            const btn = document.getElementById('copyDraftBtn');
+
+            if (!textToCopy) {
+                textarea.placeholder = "Please type or paste a review here first!";
+                textarea.focus();
+                return;
+            }
+
+            try {
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+                document.execCommand('copy');
+                
+                // Feedback UI
+                const originalText = btnText.textContent;
+                btnText.textContent = "Copied to Clipboard!";
+                btn.classList.remove('bg-[#3A322E]');
+                btn.classList.add('bg-emerald-600');
+
+                setTimeout(() => {
+                    btnText.textContent = originalText;
+                    btn.classList.remove('bg-emerald-600');
+                    btn.classList.add('bg-[#3A322E]');
+                }, 2500);
+            } catch (err) {
+                console.error("Copy failed: ", err);
+            }
+        }
+
+        // Mobile Dock Visibility Handler
+        window.addEventListener('scroll', function() {
+            const mobileDock = document.getElementById('mobileDock');
+            if (!mobileDock) return;
+
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const threshold = document.body.offsetHeight - 90;
+
+            if (scrollPosition >= threshold) {
+                mobileDock.classList.add('opacity-40', 'translate-y-2');
+            } else {
+                mobileDock.classList.remove('opacity-40', 'translate-y-2');
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>
